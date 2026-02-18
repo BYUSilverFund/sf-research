@@ -23,9 +23,10 @@ def create_signal(output_path: str = "data/signal.parquet"):
     # TODO: Load Data
     df = load_data()
 
-    # TODO: Add your signal logic here
+    # TODO: Add your signal logic here (remember alpha logic)
     
     # TODO: Save to data/signal.parquet
+    
     # pl.write_parquet(signal, output_path)
 
 if __name__ == "__main__":

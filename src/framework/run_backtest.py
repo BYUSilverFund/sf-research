@@ -9,19 +9,21 @@ def run_backtest():
 
     # Define Slurm Configuration
     slurm_config = SlurmConfig(
-        n_cpus=4,
-        mem="16G",
-        time="01:00:00"
+        n_cpus=8,
+        mem="32G",
+        time="03:00:00",
+        mail_type="BEGIN,END,FAIL",
+        max_concurrent_jobs=30,
     )
 
     # Define Backtest Configuration
     config = BacktestConfig(
-        signal_name="my_first_signal",
+        signal_name="my_first_signal", # Name your signal
         data_path=signal_path,
-        gamma=0.05, # Risk aversion? Assuming 0.05 for now
+        gamma=10, # Risk aversion: Assuming 10 for now
         project_root=project_root,
         byu_email="user@byu.edu", # Update this
-        constraints=[], # Add constraints if needed
+        constraints=[], # Add constraints
         slurm=slurm_config,
         output_dir=output_dir,
         logs_dir=logs_dir
@@ -30,7 +32,6 @@ def run_backtest():
     runner = BacktestRunner(config)
     
     # Run the backtest
-    # Note: submit(dry_run=False) will likely submit to Slurm or run locally depending on implementation
     runner.submit(dry_run=False)
 
 if __name__ == "__main__":
