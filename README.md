@@ -8,11 +8,10 @@ A template project for developing, researching, and backtesting trading signals.
 sf-signal/
 ├── src/
 │   ├── framework/
-│   │   ├── research.py           # Analyze signal characteristics (do not edit)
-│   │   ├── production.py         # View backtest performance (do not edit)
+│   │   ├── ew_dash.py            # Equal-weight dashboard (do not edit)
+│   │   ├── opt_dash.py           # Optimal portfolio dashboard (do not edit)
 │   │   └── run_backtest.py       # Run the backtest (edit config only)
 │   └── signal/
-│       ├── signal_research.ipynb # Explore and develop signal ideas (edit this)
 │       └── create_signal.py      # Your signal implementation (edit this)
 ├── data/
 │   ├── signal.parquet            # Output: Your signal
@@ -22,48 +21,40 @@ sf-signal/
 
 ## Workflow
 
-### 1. **Explore Signal Ideas** (`signal_research.ipynb`)
-   - Open Jupyter notebook to explore data and test signal logic
-   - Load historical market data
-   - Test different signal calculations
-   - Visualize signal properties
-
-### 2. **Implement Signal** (`create_signal.py`)
-   - Copy your signal logic from signal_research.ipynb into `create_signal.py`
+### 1. **Implement Signal** (`create_signal.py`)
    - Customize date ranges, data columns, and calculation logic
+   - Develop your signal logic
    - Save signal to `data/signal.parquet`
 
    ```bash
-   uv run python src/signal/create_signal.py
+   uv run create_signal
    ```
 
-### 3. **Research Signal** (`research.py`)
-   - signal.parquet should have `signal` column or you will have to change `research.py`
-   - Analyze quantile portfolios based on your signal
-   - Explore signal characteristics before backtesting
-   - Adjust quantile levels interactively
-   - View performance metrics by quantile
+### 2. **View Equal-Weight Performance** (`ew_dash.py`)
+   - Compare your signal against an equal-weight baseline
+   - Analyze signal characteristics
+   - Visualize signal properties and performance
 
    ```bash
-   uv run marimo run src/framework/research.py
+   uv run ew_dash
    ```
 
-### 4. **Run Backtest** (`run_backtest.py`)
+### 3. **Run Backtest** (`run_backtest.py`)
    - Run MVO-based backtest on your signal
    - Generates optimal portfolio weights
    - Saves results to `data/weights.parquet`
 
    ```bash
-   uv run python src/framework/run_backtest.py
+   uv run backtest
    ```
 
-### 5. **Analyze Performance** (`production.py`)
-   - View final portfolio performance
+### 4. **View Optimized Performance** (`opt_dash.py`)
+   - View optimized portfolio performance
    - Analyze backtest returns, drawdowns, and metrics
-   - Inspect portfolio weights and allocations
+   - Compare with equal-weight baseline
 
    ```bash
-   uv run marimo run src/framework/production.py
+   uv run opt_dash
    ```
 
 ## Data Files
@@ -81,45 +72,46 @@ All data files are stored in the `data/` directory:
 ## Quick Start
 
 ```bash
-# 1. Explore signal ideas in src/signal/signal_research.ipynb
-
-# 2. Implement your signal
+# 1. Implement your signal
 # Edit src/signal/create_signal.py with your logic
-uv run python src/signal/create_signal.py
+uv run create_signal
 
-# 3. Research signal characteristics
-uv run marimo run src/framework/research.py
+# 2. View equal-weight performance
+uv run ew_dash
 
-# 4. Run backtest
-uv run python src/framework/run_backtest.py
+# 3. Run backtest
+uv run backtest
 
-# 5. View performance
-uv run marimo run src/framework/production.py
+# 4. View optimized performance
+uv run opt_dash
 ```
 
 ## Template Files (Do Not Need to Edit)
 
-The following files in the `src/framework/` folder are templates and should not be modified:
-- `src/framework/research.py` - Automatically loads and analyzes your signal
-- `src/framework/production.py` - Automatically loads and displays backtest results
+The following files are templates and should not be modified:
+- `src/framework/ew_dash.py` - Equal-weight comparison dashboard
+- `src/framework/opt_dash.py` - Optimized portfolio dashboard
+- `src/framework/run_backtest.py` - Backtest runner
 
 **All signal customization happens in `src/signal/create_signal.py`.**
 
 ## Configuration
 
-Update `run_backtest.py` if needed:
+Update `src/framework/run_backtest.py` if needed:
 - `byu_email`: Your BYU email for job submission
-- `gamma`: Risk aversion parameter
+- `gamma`: Transaction costs or risk aversion parameter
 - `constraints`: Add portfolio constraints
 - `slurm`: Adjust computational resources
 
 ## Next Steps
 
-1. Develop your signal in `src/signal/signal_research.ipynb`
-2. Implement finalized logic in `src/signal/create_signal.py`
-3. Run the full pipeline to see results
-4. Iterate and refine your approach
+1. Implement your signal logic in `src/signal/create_signal.py`
+2. Run `uv run create_signal` to generate your signal
+3. Compare against baseline with `uv run ew_dash`
+4. Run backtest with `uv run backtest`
+5. Analyze optimized results with `uv run opt_dash`
+6. Iterate and refine your approach
 
 ---
 
-**Note**: This is a template project. Customize `create_signal.py` with your unique signal logic, then use the workflow above to research and backtest your ideas.
+**Note**: This is a template project. Customize `src/signal/create_signal.py` with your unique signal logic, then use the workflow above to research and backtest your ideas.

@@ -4,8 +4,12 @@ from sf_backtester import BacktestConfig, BacktestRunner, SlurmConfig
 def run_backtest():
     project_root = os.getcwd()
     signal_path = os.path.join(project_root, "data", "signal.parquet")
-    output_dir = os.path.join(project_root, "data")
+    output_dir = os.path.join(project_root, "data", "weights")
     logs_dir = os.path.join(project_root, "logs")
+
+    # Create output directories if they don't exist
+    os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(logs_dir, exist_ok=True)
 
     # Define Slurm Configuration
     slurm_config = SlurmConfig(

@@ -3,6 +3,13 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+**/__marimo__/cache/ 
+
+# data
+/data*
+/data/
+*.parquet
+
 # C extensions
 *.so
 
@@ -217,3 +224,6 @@ __marimo__/
 # Project-specific
 logs/
 data/
+
+# macOS
+.DS_Store
