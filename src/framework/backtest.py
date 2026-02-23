@@ -22,20 +22,18 @@ def run_backtest():
 
     # Define Backtest Configuration
     config = BacktestConfig(
-        signal_name="my_first_signal", # Name your signal
+        signal_name="my_first_signal",  # Name your signal
         data_path=signal_path,
-        gamma=10, # Risk aversion: Assuming 10 for now
+        gamma=10,                       # Update Risk aversion
         project_root=project_root,
-        byu_email="user@byu.edu", # Update this
-        constraints=[], # Add constraints
+        byu_email="user@byu.edu",       # Update this
+        constraints=[],                 # Add constraints
         slurm=slurm_config,
         output_dir=output_dir,
         logs_dir=logs_dir
     )
 
     runner = BacktestRunner(config)
-    
-    # Run the backtest
     runner.submit(dry_run=False)
 
 if __name__ == "__main__":

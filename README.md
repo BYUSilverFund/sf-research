@@ -39,7 +39,7 @@ sf-signal/
    - Saves signal to `data/signal.parquet`
 
    ```bash
-   uv run create-signal
+   make create-signal
    ```
 
 ### 2. **View Equal-Weight Performance** (`ew_dash.py`)
@@ -48,7 +48,7 @@ sf-signal/
    - Visualize signal properties and performance
 
    ```bash
-   uv run ew-dash
+   make ew-dash
    ```
 
 ### 3. **Run Backtest** (`backtest.py`)
@@ -57,7 +57,7 @@ sf-signal/
    - Saves results to `data/weights.parquet`
 
    ```bash
-   uv run backtest
+   make backtest
    ```
 
 ### 4. **View Optimized Performance** (`opt_dash.py`)
@@ -65,7 +65,7 @@ sf-signal/
    - Analyze backtest returns, drawdowns, and metrics
 
    ```bash
-   uv run opt-dash
+   make opt-dash
    ```
 
 ## Data Files
@@ -85,16 +85,16 @@ All data files are stored in the `data/` directory:
 ```bash
 # 1. Implement your signal
 # Edit src/signal/signal.py with your logic
-uv run create-signal
+make create-signal
 
 # 2. View equal-weight performance
-uv run ew-dash
+make ew-dash
 
 # 3. Run backtest
-uv run backtest
+make backtest
 
 # 4. View optimized performance
-uv run opt-dash
+make opt-dash
 ```
 
 ## Template Files (Do Not Need to Edit)
@@ -103,6 +103,11 @@ The following files are templates and should not be modified:
 - `src/framework/ew_dash.py` - Equal-weight comparison dashboard
 - `src/framework/opt_dash.py` - Optimized portfolio dashboard
 - `src/framework/backtest.py` - Backtest runner
+
+If you want to edit the marimo notebooks use:
+```bash
+uv run marimo run src/framework/{}_dash.py
+```
 
 **All signal customization happens in `src/signal/signal.py`.**
 
@@ -117,12 +122,14 @@ Update `src/framework/backtest.py` if needed:
 ## Next Steps
 
 1. Implement your signal logic in `src/signal/signal.py`
-2. Run `uv run create-signal` to generate your signal
-3. Compare against baseline with `uv run ew-dash`
-4. Run backtest with `uv run backtest`
-5. Analyze optimized results with `uv run opt-dash`
+2. Run `make create-signal` to generate your signal
+3. Compare against baseline with `make ew-dash`
+4. Run backtest with `make backtest`
+5. Analyze optimized results with `make opt-dash`
 6. Iterate and refine your approach
 
 ---
 
 **Note**: This is a template project. Customize `src/signal/signal.py` with your unique signal logic, then use the workflow above to backtest your ideas.
+
+
