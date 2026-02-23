@@ -84,7 +84,7 @@ All data files are stored in the `data/` directory:
 
 ```bash
 # 1. Implement your signal
-# Edit src/signal/create_signal.py with your logic
+# Edit src/signal/signal.py with your logic
 uv run create-signal
 
 # 2. View equal-weight performance
@@ -125,4 +125,4 @@ Update `src/framework/backtest.py` if needed:
 
 ---
 
-**Note**: This is a template project. Customize `src/signal/signal.py` with your unique signal logic, then use the workflow above to research and backtest your ideas.
+**Note**: This is a template project. Customize `src/signal/signal.py` with your unique signal logic, then use the workflow above to backtest your ideas.
