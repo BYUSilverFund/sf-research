@@ -2,6 +2,18 @@
 
 A template project for developing, researching, and backtesting trading signals.
 
+## 🚀 How to Use This Template
+#### To create your own repository using this template, follow these quick steps:
+1. Click the Button: At the top of this repository page, click the green "Use this template" button and select "Create a new repository."
+2. Configure:
+   - Choose an Owner (your account).
+   - Give your new repository a Name, "sf-research-{signal_name}"
+3. Create: Click "Create repository from template."
+4. Clone: Once your new repo is ready, clone it to your local machine:
+```bash
+git clone https://github.com/your-username/your-new-repo.git
+```
+
 ## Project Structure
 
 ```
@@ -10,7 +22,7 @@ sf-signal/
 │   ├── framework/
 │   │   ├── ew_dash.py            # Equal-weight dashboard (do not edit)
 │   │   ├── opt_dash.py           # Optimal portfolio dashboard (do not edit)
-│   │   └── run_backtest.py       # Run the backtest (edit config only)
+│   │   └── backtest.py       # Run the backtest (edit config only)
 │   └── signal/
 │       └── signal.py      # Your signal implementation (edit this)
 ├── data/
@@ -24,7 +36,7 @@ sf-signal/
 ### 1. **Implement Signal** (`signal.py`)
    - Customize date ranges, data columns, and calculation logic
    - Develop your signal logic
-   - Save signal to `data/signal.parquet`
+   - Saves signal to `data/signal.parquet`
 
    ```bash
    uv run create-signal
@@ -39,7 +51,7 @@ sf-signal/
    uv run ew-dash
    ```
 
-### 3. **Run Backtest** (`run_backtest.py`)
+### 3. **Run Backtest** (`backtest.py`)
    - Run MVO-based backtest on your signal
    - Generates optimal portfolio weights
    - Saves results to `data/weights.parquet`
@@ -51,7 +63,6 @@ sf-signal/
 ### 4. **View Optimized Performance** (`opt_dash.py`)
    - View optimized portfolio performance
    - Analyze backtest returns, drawdowns, and metrics
-   - Compare with equal-weight baseline
 
    ```bash
    uv run opt-dash
@@ -61,7 +72,7 @@ sf-signal/
 
 All data files are stored in the `data/` directory:
 
-- **`data/signal.parquet`**: Output from `create_signal.py`
+- **`data/signal.parquet`**: Output from `signal.py`
   - Columns: `date`, `barrid`, `alpha` (your signal)
   - Format: Parquet (AlphaSchema)
 
@@ -74,16 +85,16 @@ All data files are stored in the `data/` directory:
 ```bash
 # 1. Implement your signal
 # Edit src/signal/create_signal.py with your logic
-uv run create_signal
+uv run create-signal
 
 # 2. View equal-weight performance
-uv run ew_dash
+uv run ew-dash
 
 # 3. Run backtest
 uv run backtest
 
 # 4. View optimized performance
-uv run opt_dash
+uv run opt-dash
 ```
 
 ## Template Files (Do Not Need to Edit)
@@ -91,13 +102,13 @@ uv run opt_dash
 The following files are templates and should not be modified:
 - `src/framework/ew_dash.py` - Equal-weight comparison dashboard
 - `src/framework/opt_dash.py` - Optimized portfolio dashboard
-- `src/framework/run_backtest.py` - Backtest runner
+- `src/framework/backtest.py` - Backtest runner
 
-**All signal customization happens in `src/signal/create_signal.py`.**
+**All signal customization happens in `src/signal/signal.py`.**
 
 ## Configuration
 
-Update `src/framework/run_backtest.py` if needed:
+Update `src/framework/backtest.py` if needed:
 - `byu_email`: Your BYU email for job submission
 - `gamma`: Transaction costs or risk aversion parameter
 - `constraints`: Add portfolio constraints

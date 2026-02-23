@@ -26,10 +26,10 @@ dev = [
 ]
 
 [tool.uv.scripts]
-ew_dash = "marimo edit --port 2718 --no-token --mcp src/framework/ew_dash.py"
-opt_dash = "marimo edit --port 2718 --no-token --mcp src/framework/opt_dash.py"
-create_signal = "python src/signal/create_signal.py"
-backtest = "python src/framework/run_backtest.py"
+ew-dash = "marimo edit --port 2718 --no-token --mcp src/framework/ew_dash.py"
+opt-dash = "marimo edit --port 2718 --no-token --mcp src/framework/opt_dash.py"
+create-signal = "python src/signal/signal.py"
+backtest = "python src/framework/backtest.py"
 
 [tool.marimo.language_servers.pylsp]
 enabled = true               # Enable/disable the Python language server
