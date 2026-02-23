@@ -106,7 +106,7 @@ The following files are templates and should not be modified:
 
 If you want to edit the marimo notebooks use:
 ```bash
-uv run marimo run src/framework/{}_dash.py
+uv run marimo edit src/framework/{}_dash.py
 ```
 
 **All signal customization happens in `src/signal/signal.py`.**
