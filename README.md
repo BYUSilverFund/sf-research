@@ -1,4 +1,4 @@
-# SF-Signal
+# SF-Research
 
 A template project for developing, researching, and backtesting trading signals.
 
@@ -12,22 +12,22 @@ sf-signal/
 │   │   ├── opt_dash.py           # Optimal portfolio dashboard (do not edit)
 │   │   └── run_backtest.py       # Run the backtest (edit config only)
 │   └── signal/
-│       └── create_signal.py      # Your signal implementation (edit this)
+│       └── signal.py      # Your signal implementation (edit this)
 ├── data/
 │   ├── signal.parquet            # Output: Your signal
-│   └── weights.parquet           # Output: Backtest weights
+│   └── weights/                  # Output: Backtest weights
 └── README.md
 ```
 
 ## Workflow
 
-### 1. **Implement Signal** (`create_signal.py`)
+### 1. **Implement Signal** (`signal.py`)
    - Customize date ranges, data columns, and calculation logic
    - Develop your signal logic
    - Save signal to `data/signal.parquet`
 
    ```bash
-   uv run create_signal
+   uv run create-signal
    ```
 
 ### 2. **View Equal-Weight Performance** (`ew_dash.py`)
@@ -36,7 +36,7 @@ sf-signal/
    - Visualize signal properties and performance
 
    ```bash
-   uv run ew_dash
+   uv run ew-dash
    ```
 
 ### 3. **Run Backtest** (`run_backtest.py`)
@@ -54,7 +54,7 @@ sf-signal/
    - Compare with equal-weight baseline
 
    ```bash
-   uv run opt_dash
+   uv run opt-dash
    ```
 
 ## Data Files
@@ -65,7 +65,7 @@ All data files are stored in the `data/` directory:
   - Columns: `date`, `barrid`, `alpha` (your signal)
   - Format: Parquet (AlphaSchema)
 
-- **`data/weights.parquet`**: Output from backtest
+- **`data/weights/*.parquet`**: Output from backtest
   - Contains: Portfolio weights and performance data
   - Format: Parquet
 
@@ -105,13 +105,13 @@ Update `src/framework/run_backtest.py` if needed:
 
 ## Next Steps
 
-1. Implement your signal logic in `src/signal/create_signal.py`
-2. Run `uv run create_signal` to generate your signal
-3. Compare against baseline with `uv run ew_dash`
+1. Implement your signal logic in `src/signal/signal.py`
+2. Run `uv run create-signal` to generate your signal
+3. Compare against baseline with `uv run ew-dash`
 4. Run backtest with `uv run backtest`
-5. Analyze optimized results with `uv run opt_dash`
+5. Analyze optimized results with `uv run opt-dash`
 6. Iterate and refine your approach
 
 ---
 
-**Note**: This is a template project. Customize `src/signal/create_signal.py` with your unique signal logic, then use the workflow above to research and backtest your ideas.
+**Note**: This is a template project. Customize `src/signal/signal.py` with your unique signal logic, then use the workflow above to research and backtest your ideas.
