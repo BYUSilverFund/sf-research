@@ -14,6 +14,35 @@ A template project for developing, researching, and backtesting trading signals.
 git clone https://github.com/your-username/your-new-repo.git
 ```
 
+## Environment Setup
+
+Before running any commands, you need to configure your environment:
+
+1. **Copy the environment template:**
+```bash
+cp .env.example .env
+```
+
+2. **Edit `.env` with your settings:**
+```bash
+# Update these values:
+SIGNAL_PATH=data/signal.parquet          # Where to save your signal
+WEIGHT_DIR=data/weights                  # Where backtest results go
+LOG_DIR=logs                              # Where logs go
+
+SIGNAL_NAME="Your Signal Name"            # Name your signal
+GAMMA=50                                  # Risk aversion parameter
+EMAIL=your-netid@byu.edu                 # Your BYU email
+CONSTRAINTS=["ZeroBeta", "ZeroInvestment"]  # Portfolio constraints
+
+# Optional: Customize SLURM settings for cluster jobs
+SLURM_N_CPUS=8                           # Number of CPUs
+SLURM_MEM=32G                            # Memory allocation
+SLURM_TIME=03:00:00                      # Time limit
+```
+
+The `.env` file is **not** tracked in git (see `.gitignore`), so each user can have their own settings.
+
 ## Project Structure
 
 ```
@@ -113,11 +142,22 @@ uv run marimo edit src/framework/{}_dash.py
 
 ## Configuration
 
-Update `src/framework/backtest.py` if needed:
-- `byu_email`: Your BYU email for job submission
-- `gamma`: Transaction costs or risk aversion parameter
-- `constraints`: Add portfolio constraints
-- `slurm`: Adjust computational resources
+All configuration is managed through the `.env` file (copied from `.env.example`):
+
+- **`SIGNAL_PATH`**: Where to save your generated signal (relative or absolute path)
+- **`WEIGHT_DIR`**: Where backtest results will be saved
+- **`LOG_DIR`**: Where backtest logs will be saved
+- **`SIGNAL_NAME`**: Name for your signal
+- **`GAMMA`**: Risk aversion / transaction cost parameter
+- **`EMAIL`**: Your BYU email for job notifications
+- **`CONSTRAINTS`**: Portfolio constraints as JSON array (e.g., `["ZeroBeta", "ZeroInvestment"]`)
+- **`SLURM_N_CPUS`**: Number of CPU cores for cluster jobs
+- **`SLURM_MEM`**: Memory allocation for cluster jobs
+- **`SLURM_TIME`**: Time limit for cluster jobs
+- **`SLURM_MAIL_TYPE`**: Email notifications (BEGIN, END, FAIL)
+- **`SLURM_MAX_CONCURRENT_JOBS`**: Maximum parallel jobs
+
+**Note:** Do not edit `src/framework/backtest.py` directly. All configuration comes from `.env`.
 
 ## Next Steps
 
