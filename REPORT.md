@@ -67,16 +67,16 @@ sf-signal/
 │   ├── framework/
 │   │   ├── ew_dash.py            # Equal-weight dashboard (do not edit)
 │   │   ├── opt_dash.py           # Optimal portfolio dashboard (do not edit)
-│   │   └── backtest.py       # Run the backtest (edit config only)
+│   │   └── run_backtest.py       # Run the backtest (edit config only)
 │   └── signal/
-│       └── signal.py      # Your signal implementation (edit this)
+│       └── create_signal.py      # Your signal implementation (edit this)
 ├── data/
 │   ├── signal.parquet            # Output: Your signal
 │   └── weights/                  # Output: Backtest weights
 └── README.md
 ```
 
-### 1. **Implement Signal** (`signal.py`)
+### 1. **Implement Signal** (`create_signal.py`)
    - Customize date ranges, data columns, and calculation logic
    - Develop your signal logic
    - Saves signal to `data/signal.parquet`
@@ -94,7 +94,7 @@ sf-signal/
    make ew-dash
    ```
 
-### 3. **Run Backtest** (`backtest.py`)
+### 3. **Run Backtest** (`run_backtest.py`)
    - Run MVO-based backtest on your signal
    - Generates optimal portfolio weights
    - Saves results to `data/weights.parquet`
