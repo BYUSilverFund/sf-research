@@ -9,6 +9,9 @@ on:
 jobs:
   repo-sync:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     # Don't run this workflow in the template repo itself
     if: github.repository != 'BYUSilverFund/sf-research'
 
@@ -21,9 +24,9 @@ jobs:
       - name: Sync Template Updates
         uses: AndreasAugustin/actions-template-sync@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_gh_token: ${{ secrets.GITHUB_TOKEN }}
           source_repo_path: BYUSilverFund/sf-research
           upstream_branch: main
           pr_title: "chore: update from template"
           pr_labels: "template-sync, automated"
-          delete_workflow_runs: true
+          template_sync_ignore_file_path: .templateignore
