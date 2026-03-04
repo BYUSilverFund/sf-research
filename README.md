@@ -14,6 +14,25 @@ A template project for developing, researching, and backtesting trading signals.
 git clone https://github.com/your-username/your-new-repo.git
 ```
 
+## 🔄 Automatic Template Updates
+
+This template includes automatic syncing to keep your repository up-to-date with the latest improvements, bug fixes, and security patches.
+
+### How Updates Work
+- Every Monday at midnight UTC, GitHub automatically checks for template updates
+- If new changes are available, a pull request is created in your repository
+- You'll be notified via GitHub, and can review the changes at your convenience
+- Updates include version bumps, changelog updates, and framework improvements
+
+### One-Time Setup
+When you first receive an update PR, you'll need to configure GitHub Actions permissions (one-time only):
+
+1. Go to **Settings → Actions → General**
+2. Under "Workflow permissions," select **"Read and write permissions"**
+3. Check **"Allow GitHub Actions to create and approve pull requests"**
+
+After this, updates will flow in automatically. You can always merge, ignore, or customize the updates as needed for your specific project.
+
 ## Environment Setup
 
 Before running any commands, you need to configure your environment:
@@ -167,6 +186,33 @@ All configuration is managed through the `.env` file (copied from `.env.example`
 4. Run backtest with `make run-backtest`
 5. Analyze optimized results with `make opt-dash`
 6. Iterate and refine your approach
+
+---
+
+## 📝 Maintaining This Template (For Template Maintainers)
+
+If you're maintaining the template repository and need to release updates:
+
+### Release Process
+1. **Update the VERSION file** with the new semantic version (e.g., `1.0.1` for bug fixes, `1.1.0` for new features)
+   - Follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html): `MAJOR.MINOR.PATCH`
+
+2. **Update CHANGELOG.md** with what changed
+   - Use the format: Added, Changed, Deprecated, Removed, Fixed, Security
+
+3. **Commit and push** your changes to the main branch
+   ```bash
+   git add VERSION CHANGELOG.md [other files]
+   git commit -m "chore: release v1.0.1"
+   git push
+   ```
+
+### Automatic Syncing
+- The template sync workflow automatically runs every Monday
+- All repositories created from this template will receive a pull request with the updates
+- Users can review, merge, or customize the changes as needed
+
+For more details, see [CHANGELOG.md](CHANGELOG.md).
 
 ---
 
