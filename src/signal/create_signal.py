@@ -38,7 +38,7 @@ def create_signal():
 
     # TODO: Save to data/signal.parquet
 
-    # pl.write_parquet(signal, output_path)
+    # df.write_parquet(output_path)
 
 if __name__ == "__main__":
     create_signal()
